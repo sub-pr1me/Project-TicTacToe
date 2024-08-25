@@ -1,3 +1,32 @@
 :root {
-    background-color: #999999;
+    background-color: #000000;
+}
+
+body {
+    margin: 0px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: grid;
+    grid: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    margin: 10px;
+}
+
+.field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    font-family: system-ui;
+    font-size: 100px;
+    background-color: rgb(38, 106, 170);
+    color: rgb(246, 174, 255);
 }
