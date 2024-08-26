@@ -4,9 +4,26 @@
 
 body {
     margin: 0px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: system-ui;
+}
+
+.display {
+    display: flex;
+    height: 75px;
+    width: 320px;
+    background-color: aquamarine;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border-radius: 10px;
 }
 
 .container {
@@ -16,7 +33,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 300px;
-    margin: 10px;
+    margin-bottom: 50px;
 }
 
 .field {
@@ -25,8 +42,27 @@ body {
     align-items: center;
     width: 100px;
     height: 100px;
-    font-family: system-ui;
     font-size: 100px;
-    background-color: rgb(38, 106, 170);
+    background-color: rgb(47, 89, 179);
     color: rgb(246, 174, 255);
+}
+
+.field:hover {
+    background-color: rgb(83, 123, 211);
+}
+
+button {
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(25, 44, 85);
+    color: azure;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+button:hover {
+    background-color: rgb(36, 58, 107);
+    color: aquamarine;
 }
