@@ -10,34 +10,35 @@ const obj = (function () {
 })();
 const func = (function () {
     const greeting = () => {
-        obj.display.textContent = 'MAKE YOUR MOVE!'
+        obj.display.textContent = `YOUR MOVE ${obj.playerX.name}!`
     };
     const whosTurn = () => {
         return (obj.playerX.moves > obj.playerO.moves) ? 'O' : 'X'; 
     };
-    const playerMove = () => {
+    const gameFlow = () => {
+        obj.playerX.name = prompt('ENTER THE NAME FOR PLAYER 1');
+        obj.playerO.name = prompt('ENTER THE NAME FOR PLAYER 2');
+        greeting();
         obj.container.addEventListener('click', (e) => {
             if (e.target.classList.contains('field')
                 && e.target.textContent === ''
-                && obj.display.textContent !== 'PLAYER 1 WINS!'
-                && obj.display.textContent !== 'PLAYER 2 WINS!'
+                && obj.display.textContent !== `${obj.playerX.name} WINS!`
+                && obj.display.textContent !== `${obj.playerO.name} WINS!`
                 && obj.display.textContent !== `IT'S A TIE!`) {
                 let num = e.target.className.slice(-1);
                 obj.board[num-1] = whosTurn();
                 e.target.textContent = whosTurn();
-
                 if (e.target.textContent === 'X') {
                     obj.playerX.moves++
                 } else {
                     obj.playerO.moves++
                 };
-                // console.log(obj.board);
                 obj.display.textContent = displayContent(gameStatus());
             };            
         });
     };
     const displayContent = (status) => {
-        return status ? status : 'GAME IN PROGRESS';
+        return status ? status : `YOUR MOVE ${obj['player' + `${whosTurn()}`].name}!`;
     };
     const gameStatus = () => {
         let winCombos = [
@@ -53,20 +54,17 @@ const func = (function () {
             if (!winCombos[i].includes('O')
                 && !winCombos[i].includes('')) {
                 newGameButton();
-                return 'PLAYER 1 WINS!';
-
+                return `${obj.playerX.name} WINS!`;
             } else if (!winCombos[i].includes('X')
                 && !winCombos[i].includes('')) {
                 newGameButton();
-                return 'PLAYER 2 WINS!';
-
+                return `${obj.playerO.name} WINS!`;
             } else if (!obj.board.includes('') && i===winCombos.length-1) {
                 newGameButton();
                 return `IT'S A TIE!`;
-
             } else if (!obj.board.includes('X') 
                 && !obj.board.includes('O')) {
-                return 'MAKE YOUR MOVE!';
+                return `YOUR MOVE ${obj.playerX.name}!`
             };
         };
     };
@@ -88,13 +86,10 @@ const func = (function () {
         });
         const btn = document.querySelector('button');
         obj.body.removeChild(btn);
-        func.greeting();
         func.whosTurn();
-        func.playerMove();
+        func.gameFlow();
     };
-    return { greeting, whosTurn, playerMove, gameStatus, displayContent, newGameButton };
+    return { whosTurn, gameFlow };
 })();
-
-func.greeting();
 func.whosTurn();
-func.playerMove();
+func.gameFlow();
