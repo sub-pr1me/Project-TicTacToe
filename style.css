@@ -46,10 +46,12 @@ body {
     font-size: 100px;
     background-color: rgb(47, 89, 179);
     color: rgb(246, 174, 255);
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .field:hover {
     background-color: rgb(83, 123, 211);
+    transform: scale(1.03);
 }
 
 button {
